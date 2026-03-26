@@ -1,0 +1,39 @@
+managed implementation in class zbp_i_projeto unique;
+strict ( 2 );
+
+
+define behavior for ZI_Projeto alias Projeto
+persistent table ztprojeto
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+
+  field ( numbering : managed, readonly ) ProjetoId;
+  field ( readonly ) LastChangedAt;
+
+  // Determination para preencher status inicial
+  determination setStatusInicial on modify { create; }
+
+  validation validarDatas on save { create; update; field DataInicio, DataFim; }
+
+
+  mapping for ztprojeto
+    {
+      ProjetoId     = projeto_id;
+      NomeProjeto   = nome_projeto;
+      Cliente       = cliente;
+      DataInicio    = data_inicio;
+      DataFim       = data_fim;
+      Status        = status;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+
+}

@@ -1,0 +1,81 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+      typeName: 'Projetos',
+      title: { type: #STANDARD, label: 'Projetos Eder', value: 'ProjetoId' }
+      }
+    }
+
+annotate entity ZC_Projeto
+    with 
+{
+  @UI.facet: [{ id: 'ProjetoId',
+  purpose: #STANDARD,
+  type: #IDENTIFICATION_REFERENCE,
+  label: 'ID do Projeto',
+  position: 10 }]
+  
+  @UI: { lineItem: [{
+  position: 10,
+  importance: #HIGH,
+  label: 'Id do Projeto' }],
+  identification: [{position: 10}],
+  selectionField: [{position: 10}]
+}
+ProjetoId;
+
+ @UI: { lineItem: [{
+  position: 20,
+  importance: #HIGH,
+  label: 'Nome do Projeto' }],
+  identification: [{position: 20}],
+  selectionField: [{position: 20}]
+}
+NomeProjeto;
+
+ @UI: { lineItem: [{
+  position: 30,
+  importance: #HIGH,
+  label: 'Cliente' }],
+  identification: [{position: 30}],
+  selectionField: [{position: 30}]
+}
+Cliente;
+
+@UI: { lineItem: [{
+  position: 40,
+  importance: #HIGH,
+  label: 'Data Início' }],
+  identification: [{position: 40}],
+  selectionField: [{position: 40}]
+}
+DataInicio;
+
+@UI: { lineItem: [{
+  position: 50,
+  importance: #HIGH,
+  label: 'Data Fim' }],
+  identification: [{position: 50}],
+  selectionField: [{position: 50}]
+}
+DataFim;
+
+@UI: { lineItem: [{
+  position: 70,
+  importance: #HIGH,
+  label: 'Status', criticality: 'StatusCriticality', criticalityRepresentation: #WITH_ICON }], // Ativa a exibição do ícone                       
+  identification: [{position: 70, criticality: 'StatusCriticality' }],
+  selectionField: [{position: 70}] }
+  @UI.textArrangement: #TEXT_ONLY // Esconde a letra e mostra só o texto
+Status;
+
+@UI: { lineItem: [{
+  position: 80,
+  importance: #HIGH,
+  label: 'Data Fim' }],
+  identification: [{position: 80}],
+  selectionField: [{position: 80}]
+}
+LastChangedAt;
+  
+}
